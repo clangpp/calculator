@@ -34,7 +34,7 @@ int main() {
   // we know we have done reading all charactors in string.
   for (i = 0; i < MAX_SIZE && expression[i] != '\0'; ++i) {
     ch = expression[i];
-    printf("current character: %c\n", ch);
+    // printf("current character: %c\n", ch);
     switch (ch) {
       // Handles operators.
       case '+':
@@ -46,8 +46,15 @@ int main() {
         } else {
           result = Calculate(result, op, num);  // Updates result.
         }
+
+        // Print debug information.
+        expression[i] = '\0';
+        printf("result of '%s' is %d\n", expression, result);
+        expression[i] = ch;
+
         num = 0;  // Clears current number to be parsed from expression.
         op = ch;  // Updates operator.
+        printf("op is '%c'\n", op);
         break;
       }
 
@@ -63,6 +70,7 @@ int main() {
       case '8':
       case '9': {
         num = num * 10 + (ch - '0');
+        printf("num is %d\n", num);
         break;
       }
       default:
@@ -74,6 +82,5 @@ int main() {
     // Don't forget last number.
     result = Calculate(result, op, num);
   }
-  
-  printf("result is: %d\n", result);
+  printf("result of '%s' is %d\n", expression, result);
 }
