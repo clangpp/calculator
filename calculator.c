@@ -82,6 +82,7 @@ int PriorityEvaluateOneOperator(int* numbers, char* operators, int op_count) {
   // Evaluates chosen operator.
   num_left = numbers[op_chosen];
   num_right = numbers[op_chosen+1];
+  printf("evaluating: '%d%c%d'\n", num_left, operators[op_chosen], num_right);
   switch (operators[op_chosen]) {
     case '+':
       result = num_left + num_right;
